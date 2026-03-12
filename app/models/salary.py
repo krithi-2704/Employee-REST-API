@@ -3,12 +3,12 @@ from typing import Optional
 
 @dataclass
 class Salary:
-    SalaryID: Optional[int] = field(default=None, compare=False)
     EmployeeID: int
     BasicSalary: float
     Bonus: float
     Allowances: float
-    
+    SalaryID: Optional[int] = field(default=None, compare=False)
+
     def to_dict(self):
         """Convert to dictionary for JSON serialization"""
         return {
@@ -18,14 +18,14 @@ class Salary:
             'Bonus': self.Bonus,
             'Allowances': self.Allowances
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         """Create Salary from dictionary"""
         return cls(
-            SalaryID=data.get('SalaryID'),
             EmployeeID=data['EmployeeID'],
             BasicSalary=data['BasicSalary'],
             Bonus=data['Bonus'],
-            Allowances=data['Allowances']
+            Allowances=data['Allowances'],
+            SalaryID=data.get('SalaryID')
         )

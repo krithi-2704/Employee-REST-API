@@ -3,10 +3,10 @@ from typing import Optional
 
 @dataclass
 class Department:
-    DepartmentID: Optional[int] = field(default=None, compare=False)
     DepartmentName: str
     Location: str
-    
+    DepartmentID: Optional[int] = field(default=None, compare=False)
+
     def to_dict(self):
         """Convert to dictionary for JSON serialization"""
         return {
@@ -14,12 +14,12 @@ class Department:
             'DepartmentName': self.DepartmentName,
             'Location': self.Location
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         """Create Department from dictionary"""
         return cls(
-            DepartmentID=data.get('DepartmentID'),
             DepartmentName=data['DepartmentName'],
-            Location=data['Location']
+            Location=data['Location'],
+            DepartmentID=data.get('DepartmentID')
         )
