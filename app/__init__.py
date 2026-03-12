@@ -1,10 +1,10 @@
 from flask import Flask
-from app.config import Config
+from app.config import BaseConfig
 from app.extensions import jwt
 from app.errors import register_error_handlers
 from app.api import register_blueprints
 
-def create_app(config_class=Config):
+def create_app(config_class=BaseConfig):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
